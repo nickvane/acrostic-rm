@@ -8,17 +8,10 @@
 --
 
 
-engine.name="Acrostic"
+engine.name="Acrostic-rm"
 
 global_shift=false
 global_page=0
-startup_eyes={
-  irisSize=14,
-  blinkState=3,
-  blinkState2=3,
-  volume=10,
-  brightness=10,
-}
 
 function init()
   norns.enc.sens(1,10)
@@ -299,26 +292,9 @@ function init()
     params:set("monosaw_amp",0.5)
   end
 
-  show_startup_screen_max=10
-  show_startup_screen=0
-  clock.run(function()
-    while true do
-      if show_startup_screen==show_startup_screen_max and global_page==0 then
-        global_page=1
-        acrostic:toggle_start()
-        show_startup_screen=show_startup_screen+1
-        acrostic:msg("k1+k3 records")
-      end
-      if show_startup_screen<show_startup_screen_max then
-        -- startup_eyes.blinkState=util.linlin(0,show_startup_screen_max^2,3,0.001,show_startup_screen^2)
-        -- startup_eyes.blinkState2=util.linlin(0,show_startup_screen_max^2,2.9,0.001,show_startup_screen^2)
-        -- startup_eyes.volume=util.linlin(0,show_startup_screen_max,10,100,show_startup_screen)
-        show_startup_screen=show_startup_screen+1
-      end
-      clock.sleep(1/10)
-    end
-  end)
-  
+  global_page=1
+  acrostic:toggle_start()
+  acrostic:msg("k1+k3 records")  
 end
 
 function refresh() 
@@ -391,8 +367,7 @@ function redraw()
   else
     screen.clear()
   end
-  -- monosaw:eyes(14,4,0,100,10)
-  -- screen.update()
+  screen.update()
   -- do return end
   if global_page==1 or global_page==2 then
     acrostic:draw()
@@ -403,7 +378,7 @@ function redraw()
   elseif global_page==5 then
     monosaw:draw()
   elseif global_page==0 then
-    -- monosaw:eyes(startup_eyes.irisSize,startup_eyes.blinkState,startup_eyes.blinkState2,startup_eyes.volume,startup_eyes.brightness)
+    
   end
   screen.update()
 end
