@@ -8,7 +8,7 @@
 --
 
 
-engine.name="Acrostic-rm"
+engine.name="Acrostic"
 
 global_shift=false
 global_page=0
