@@ -310,9 +310,9 @@ function init()
         acrostic:msg("k1+k3 records")
       end
       if show_startup_screen<show_startup_screen_max then
-        startup_eyes.blinkState=util.linlin(0,show_startup_screen_max^2,3,0.001,show_startup_screen^2)
-        startup_eyes.blinkState2=util.linlin(0,show_startup_screen_max^2,2.9,0.001,show_startup_screen^2)
-        startup_eyes.volume=util.linlin(0,show_startup_screen_max,10,100,show_startup_screen)
+        -- startup_eyes.blinkState=util.linlin(0,show_startup_screen_max^2,3,0.001,show_startup_screen^2)
+        -- startup_eyes.blinkState2=util.linlin(0,show_startup_screen_max^2,2.9,0.001,show_startup_screen^2)
+        -- startup_eyes.volume=util.linlin(0,show_startup_screen_max,10,100,show_startup_screen)
         show_startup_screen=show_startup_screen+1
       end
       clock.sleep(1/10)
@@ -403,7 +403,7 @@ function redraw()
   elseif global_page==5 then
     monosaw:draw()
   elseif global_page==0 then
-    monosaw:eyes(startup_eyes.irisSize,startup_eyes.blinkState,startup_eyes.blinkState2,startup_eyes.volume,startup_eyes.brightness)
+    -- monosaw:eyes(startup_eyes.irisSize,startup_eyes.blinkState,startup_eyes.blinkState2,startup_eyes.volume,startup_eyes.brightness)
   end
   screen.update()
 end
